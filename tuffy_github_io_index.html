@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    ==============================================
+    EDIT 1: PAGE TITLE (browser tab + SEO preview)
+    ==============================================
+  -->
+  <title>Tuffy Licciardi Issa | Academic Website</title>
+
+  <!--
+    ==============================================
+    EDIT 2: BASIC SEO / SOCIAL SHARING
+    Replace content below with your real description
+    ==============================================
+  -->
+  <meta name="description" content="Tuffy Licciardi Issa | Economics student at FEA-USP. Research interests in applied econometrics, labor economics, and policy evaluation." />
+  <meta property="og:title" content="Tuffy Licciardi Issa | Academic Website" />
+  <meta property="og:description" content="Research, teaching, CV, and contact information." />
+  <meta property="og:type" content="website" />
+
+  <!--
+    ==============================================
+    EDIT 3: FONTS
+    You can change the fonts here.
+    Current style:
+    - Serif for headings (more academic)
+    - Sans-serif for body text (clean and readable)
+    ==============================================
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /*
+        ==============================================
+        EDIT 4: COLOR PALETTE
+        Main colors for the site.
+        If you want a different look later, start here.
+        ==============================================
+      */
+      --bg: #f7f6f3;
+      --paper: #ffffff;
+      --text: #1d1d1b;
+      --muted: #5e5a55;
+      --line: #ddd8cf;
+      --accent: #19335a;   /* dark academic blue */
+      --accent-soft: #e9eef6;
+      --highlight: #7a6a58; /* warm neutral for small details */
+      --max-width: 1040px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* ==============================================
+       TOP NAVBAR
+       EDIT 5: navigation labels / links
+       ============================================== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 243, 0.9);
+      border-bottom: 1px solid rgba(221, 216, 207, 0.8);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ==============================================
+       HERO SECTION
+       EDIT 6: intro text / headline / buttons
+       ============================================== */
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--highlight);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.15;
+      margin: 0 0 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 62ch;
+      margin: 0 0 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      border: 1px solid var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .button.primary:hover {
+      background: #102744;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .button.secondary:hover {
+      background: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    .profile-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #dfe7f3, #f3efe8);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-list div {
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .mini-list strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
+    /* ==============================================
+       GENERAL SECTION LAYOUT
+       ============================================== */
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1.65rem;
+      margin: 0 0 14px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0 0 24px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      color: var(--text);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    /* ==============================================
+       TIMELINE / TEACHING / PROJECTS LISTS
+       ============================================== */
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stack-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stack-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .stack-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .stack-date {
+      color: var(--highlight);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .stack-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* ==============================================
+       CONTACT / FOOTER
+       ============================================== */
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* ==============================================
+       RESPONSIVE
+       ============================================== */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-box,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==============================================
+       TOP NAVIGATION
+       EDIT 7: change section names / add links
+       ============================================== -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Tuffy Licciardi Issa</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==============================================
+         HERO
+         EDIT 8: change headline / intro / buttons
+         ============================================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Academic Website</span>
+          <h1>Economics, data, and applied research.</h1>
+          <p>
+            I am Tuffy Licciardi Issa, an economics student at FEA-USP with interests in
+            applied econometrics, labor economics, and policy evaluation. This website
+            gathers my research, teaching materials, curriculum vitae, and contact information.
+          </p>
+          <p>
+            My current work focuses on empirical strategies for identifying labor market effects,
+            with particular interest in administrative data, legal institutions, and heterogeneous impacts.
+          </p>
+
+          <div class="hero-actions">
+            <!-- EDIT 9: replace these links with your real files/pages -->
+            <a class="button primary" href="#research">View Research</a>
+            <a class="button secondary" href="#cv">Download CV</a>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             PROFILE CARD
+             EDIT 10: add real photo, affiliation, interests, location
+             To add an image later, replace the placeholder div with:
+             <img src="your-photo.jpg" alt="Tuffy Licciardi Issa" class="profile-photo">
+             ============================================== -->
+        <aside class="profile-card">
+		<img src="profile.jpg" alt="Tuffy Licciardi Issa" class="profile-photo">
+          <div class="mini-list">
+            <div>
+              <strong>Affiliation</strong>
+              University of São Paulo (FEA-USP)
+            </div>
+            <div>
+              <strong>Fields</strong>
+              Applied Econometrics, Labor Economics, Policy Evaluation
+            </div>
+            <div>
+              <strong>Location</strong>
+              São Paulo, Brazil
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         ABOUT
+         EDIT 11: replace bio text with your own summary
+         ============================================== -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-intro">
+          I am interested in development economics, with an emphasis on microeconomic analysis of crime, labor markets, and education constraints
+          in low- and middle-income countries. I seek to combine economic theory, econometrics, and social policy evaluation. This academic curiosity
+          was largely shaped by my multicultural background and multidisciplinary interests. My family roots in Italy and Lebanon also contributed to
+          my uncommon name for a Brazilian. I share my reproducible research workflows in R and LaTeX.
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <span class="tag">Research Interests</span>
+            <h3>Applied Microeconomics</h3>
+            <p>
+              My research centers on applied microeconomics, with a focus on labor economics, policy evaluation, crime economics,
+               education, and development economics. I leverage causal inference methods, drawing on Brazilian administrative 
+               data to uncover insights into economic behaviors and policy impacts in low- and middle-income contexts.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="tag">Methods</span>
+            <h3>Empirical Tools</h3>
+            <p>
+                Using R, LaTeX, and Git/GitHub to develop reproducible research workflows and perform statistical and econometric analysis,
+                 including data cleaning and pipeline construction.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         RESEARCH
+         EDIT 12: add your real projects / papers / job market papers
+         Duplicate stack-item blocks as needed
+         ============================================== -->
+    <section id="research" class="section">
+      <div class="container">
+        <h2 class="section-title">Research</h2>
+        <p class="section-intro">
+          Selected ongoing work and research projects. You can later add PDF links, abstracts,
+          coauthors, and working paper versions inside each block.
+        </p>
+
+        <div class="stack">
+          <article class="stack-item">
+            <div class="stack-top">
+              <div class="stack-title">Legal Action and Labor Market Outcomes in Brazil</div>
+              <div class="stack-date">Ongoing</div>
+            </div>
+            <p>
+              Research project examining labor market dynamics following legal action, with emphasis on
+              heterogeneous effects across worker groups and occupational transitions.
+            </p>
+          </article>
+
+          <article class="stack-item">
+            <div class="stack-top">
+              <div class="stack-title">Administrative Data and Occupational Mobility</div>
+              <div class="stack-date">Project</div>
+            </div>
+            <p>
+              Empirical analysis of occupational sorting, labor market trajectories, and worker-level responses
+              using Brazilian matched employer-employee data.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         TEACHING
+         EDIT 13: insert courses, TA roles, materials, office hours
+         ============================================== -->
+    <section id="teaching" class="section">
+      <div class="container">
+        <h2 class="section-title">Teaching</h2>
+        <p class="section-intro">
+          Teaching experience, course materials, and selected academic support resources.
+        </p>
+
+        <div class="stack">
+          <article class="stack-item">
+            <div class="stack-top">
+              <div class="stack-title">Teaching Assistant — Econometrics I</div>
+              <div class="stack-date">2026</div>
+            </div>
+            <p>
+              Undergraduate teaching support including exercise sessions, R introduction materials,
+              and econometrics problem-solving assistance.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         CV
+         EDIT 14: replace CV link with your real PDF file
+         Example: href="files/Tuffy_CV.pdf"
+         ============================================== -->
+    <section id="cv" class="section">
+      <div class="container">
+        <h2 class="section-title">Curriculum Vitae</h2>
+        <div class="card">
+          <p>
+            A current version of my CV can be downloaded here:
+            <a href="#">Download CV</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         CONTACT
+         EDIT 15: replace with your real email and links
+         ============================================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-box">
+          <div class="card">
+            <p>
+              I am always happy to connect about research, teaching, and academic collaboration.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:your-email@example.com">Email</a>
+              <a href="https://github.com/tuffyli" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Website Notes</h3>
+            <p>
+              This website is designed to be simple, readable, and easy to maintain.
+              Most future edits can be made by changing the text inside the highlighted
+              EDIT sections in the HTML file.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Tuffy Licciardi Issa. Built for GitHub Pages.
+    </div>
+  </footer>
+</body>
+</html>
