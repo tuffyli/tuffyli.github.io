@@ -48,13 +48,13 @@
       --paper: #ffffff;
       --text: #1d1d1b;
       --muted: #5e5a55;
-      --line: #ddd8cf;
+      --line: rgba(221, 216, 207, 0.32);
       --accent: #19335a;   /* dark academic blue */
       --accent-soft: #e9eef6;
       --highlight: #7a6a58; /* warm neutral for small details */
       --max-width: 1040px;
-      --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-      --radius: 16px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
     }
 
     * {
@@ -332,8 +332,8 @@
 
     .stack-top {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
+      justify-content: flex-start;
+      gap: 10px;
       align-items: baseline;
       flex-wrap: wrap;
       margin-bottom: 10px;
@@ -346,13 +346,157 @@
 
     .stack-date {
       color: var(--highlight);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 500;
       white-space: nowrap;
+      margin-top: 2px;
     }
 
     .stack-item p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .accordion {
+      display: grid;
+      gap: 0;
+      margin-top: 24px;
+      background: transparent;
+    }
+
+    .accordion-group {
+      margin-top: 24px;
+    }
+
+    .accordion-group:first-child {
+      margin-top: 0;
+    }
+
+    .accordion-item {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+    }
+
+    .accordion-item + .accordion-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .accordion-item summary {
+      cursor: pointer;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      font-weight: 700;
+      list-style: none;
+      color: var(--text);
+      background: transparent;
+      outline: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .accordion-item summary:hover {
+      color: var(--accent);
+      background: rgba(25, 51, 90, 0.04);
+    }
+
+    .accordion-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion-item summary::after {
+      content: '+';
+      font-size: 1.35rem;
+      color: var(--highlight);
+      justify-self: end;
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-item[open] summary::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+
+    .accordion-summary-content {
+      display: grid;
+      gap: 4px;
+    }
+
+    .accordion-summary-title {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .accordion-summary-subtitle {
+      font-size: 0.96rem;
+      color: var(--accent);
+      font-weight: 600;
+      opacity: 1;
+      display: inline-flex;
+      align-items: center;
+      padding: 0px 0px;
+      border: 0px solid var(--line);
+      border-radius: 0px;
+      background: transparent;}
+
+    .accordion-list .stack-item .stack-title {
+      font-weight: 600;
+    }
+
+    .accordion-list {
+      display: grid;
+      gap: none;
+      padding: 0px 20px;
+      background: transparent;
+    }
+
+    .accordion-list .stack-item {
+      margin: 0;
+      box-shadow: none;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      padding: 18px 0px;
+      background: var(--paper);
+    }
+
+    .accordion-list .stack-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-list .stack-item .stack-top {
+      margin-bottom: 10px;
+    }
+
+    .accordion-list .stack-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .accordion-list .stack-item a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .accordion-list .stack-item a:hover {
+      text-decoration: underline;
+    }
+
+    .accordion-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .accordion-card a:hover {
+      text-decoration: underline;
     }
 
     /* ==============================================
@@ -557,6 +701,84 @@
             </p>
           </article>
         </div>
+
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary>
+                <div class="accordion-summary-content">
+                  <span class="accordion-summary-title">Published Articles</span>
+                </div>
+              </summary>
+              <div class="accordion-list">
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Worker protections and wage dynamics</div>
+                  </div>
+                  <p><a href="https://example.com/published-article-1" target="_blank" rel="noopener noreferrer">Published article on the impact of labor protection policies on wages and employment.</a></p>
+                </article>
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Labor market institutions in Brazil</div>
+                  </div>
+                  <p><a href="https://example.com/published-article-2" target="_blank" rel="noopener noreferrer">Peer-reviewed work analyzing institutional effects on Brazilian labor market outcomes.</a></p>
+                </article>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary>
+                <div class="accordion-summary-content">
+                  <span class="accordion-summary-title">Working Papers</span>
+                </div>
+              </summary>
+              <div class="accordion-list">
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Administrative data for occupational mobility</div>
+                  </div>
+                  <p><a href="https://example.com/working-paper-1" target="_blank" rel="noopener noreferrer">Working paper using matched employer-employee records to study mobility patterns.</a></p>
+                </article>
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Legal action and employment outcomes</div>
+                  </div>
+                  <p><a href="https://example.com/working-paper-2" target="_blank" rel="noopener noreferrer">Analysis of labor market consequences following access to legal representation.</a></p>
+                </article>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item">
+              <summary>
+                <div class="accordion-summary-content">
+                  <span class="accordion-summary-title">Non-academic Writing</span>
+                </div>
+              </summary>
+              <div class="accordion-list">
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Blog post on labor policy evaluation</div>
+                  </div>
+                  <p><a href="https://example.com/blog-labor-policy" target="_blank" rel="noopener noreferrer">Short-form writing tailored to policymakers and broader audiences.</a></p>
+                </article>
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Op-ed on econometrics in education policy</div>
+                  </div>
+                  <p><a href="https://example.com/op-ed-education" target="_blank" rel="noopener noreferrer">Non-academic piece highlighting empirical evidence for education reform.</a></p>
+                </article>
+              </div>
+            </details>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -575,11 +797,23 @@
           <article class="stack-item">
             <div class="stack-top">
               <div class="stack-title">Teaching Assistant — Econometrics I</div>
-              <div class="stack-date">2026</div>
+              <div class="stack-date">Spring 2026</div>
             </div>
             <p>
               Undergraduate teaching support including exercise sessions, R introduction materials,
-              and econometrics problem-solving assistance.
+              and econometrics problem-solving assistance during the Spring 2026 semester.
+              Materials are available in the <a href="https://github.com/tuffyli/TA-EAE1221-Econometria-I" target="_blank" rel="noopener noreferrer">Econometrics I GitHub repository</a>.
+            </p>
+          </article>
+
+          <article class="stack-item">
+            <div class="stack-top">
+              <div class="stack-title">Teaching Assistant — Data Analysis for Policy</div>
+              <div class="stack-date">Fall 2025</div>
+            </div>
+            <p>
+              Assisted with lab sessions, Python data tutorials, and policy evaluation case studies
+              during the Fall 2025 semester.
             </p>
           </article>
         </div>
@@ -616,10 +850,10 @@
               I am always happy to connect about research, teaching, and academic collaboration.
             </p>
             <div class="contact-links">
-              <a href="mailto:your-email@example.com">Email</a>
+              <a href="mailto:tuffyissa@gmail.com">Email</a>
               <a href="https://github.com/tuffyli" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a href="https://www.linkedin.com/in/tuffy-licciardi-issa-7b461224a/?skipRedirect=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://scholar.google.com.br/citations?user=y1d4Js8AAAAJ&hl=pt-BR" target="_blank" rel="noopener noreferrer">Google Scholar</a>
             </div>
           </div>
 
