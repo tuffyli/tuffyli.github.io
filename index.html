@@ -172,8 +172,15 @@
     .hero p {
       color: var(--muted);
       font-size: 1.04rem;
-      max-width: 62ch;
-      margin: 0 0 20px;
+      max-width: 60ch;
+      margin: 0 0 20px;  /* adjust spacing between paragraphs */
+       text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        word-break: normal;
+        overflow-wrap: normal;
     }
 
     .hero-actions {
@@ -271,9 +278,18 @@
 
     .section-intro {
       color: var(--muted);
-      max-width: 70ch;
-      margin: 0 0 24px;
+      max-width: 120ch;
+      margin: 0 0 32px;
+      line-height: 1.8;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      word-break: normal;
+      overflow-wrap: normal;
     }
+
 
     .card-grid {
       display: grid;
@@ -342,6 +358,14 @@
     .stack-title {
       font-weight: 700;
       font-size: 1.02rem;
+    }
+
+    .stack-label {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-left: 0.35rem;
+      white-space: nowrap;
     }
 
     .stack-date {
@@ -583,16 +607,18 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Academic Website</span>
-          <h1>Economics, data, and applied research.</h1>
+          <span class="eyebrow">My website</span>
+          <h1>Tuffy Licciardi Issa</h1>
           <p>
-            I am Tuffy Licciardi Issa, an economics student at FEA-USP with interests in
-            applied econometrics, labor economics, and policy evaluation. This website
-            gathers my research, teaching materials, curriculum vitae, and contact information.
+            I am Tuffy Licciardi Issa, an economics student at FEA-USP interested in applied microeconomics, econometrics,
+             and development economics. My research focuses on crime, labor markets, and educational constraints in low- and
+              middle-income countries, with an emphasis on microeconomic analysis and policy evaluation. This website brings
+               together my research, teaching materials, curriculum vitae, and contact information.
           </p>
           <p>
-            My current work focuses on empirical strategies for identifying labor market effects,
-            with particular interest in administrative data, legal institutions, and heterogeneous impacts.
+            My academic interests have been shaped by a multicultural background and a strong interest in combining economic theory,
+             empirical methods, and social policy analysis. I also care deeply about transparent and reproducible research, and I 
+             regularly share my workflows in R and LaTeX.
           </p>
 
           <div class="hero-actions">
@@ -636,13 +662,15 @@
       <div class="container">
         <h2 class="section-title">About</h2>
         <p class="section-intro">
-          I am interested in development economics, with an emphasis on microeconomic analysis of crime, labor markets, and education constraints
-          in low- and middle-income countries. I seek to combine economic theory, econometrics, and social policy evaluation. This academic curiosity
-          was largely shaped by my multicultural background and multidisciplinary interests. My family roots in Italy and Lebanon also contributed to
-          my uncommon name for a Brazilian. I share my reproducible research workflows in R and LaTeX.
+          I am an aspiring economist motivated by questions about opportunity, inequality, and the institutional forces that shape
+           individual outcomes. My interest in economics grew from a broader curiosity about how people respond to constraints, incentives,
+            and public policy. Over time, this led me to applied research at the intersection of labor, crime, education, and development.
         </p>
-
-        <div class="card-grid">
+        <p class = "section-intro">
+         My academic perspective has also been shaped by a multicultural background and by interests that extend beyond economics alone.
+          I care deeply about clear thinking, rigorous empirical work, and reproducible research practices, and I regularly use and share workflows in R and LaTeX.
+        </p>
+<!--        <div class="card-grid">
           <article class="card">
             <span class="tag">Research Interests</span>
             <h3>Applied Microeconomics</h3>
@@ -662,7 +690,7 @@
             </p>
           </article>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- ==============================================
@@ -673,12 +701,9 @@
     <section id="research" class="section">
       <div class="container">
         <h2 class="section-title">Research</h2>
-        <p class="section-intro">
-          Selected ongoing work and research projects. You can later add PDF links, abstracts,
-          coauthors, and working paper versions inside each block.
-        </p>
 
-        <div class="stack">
+
+<!--       <div class="stack">
           <article class="stack-item">
             <div class="stack-top">
               <div class="stack-title">Legal Action and Labor Market Outcomes in Brazil</div>
@@ -700,7 +725,7 @@
               using Brazilian matched employer-employee data.
             </p>
           </article>
-        </div>
+        </div> -->
 
         <div class="accordion-group">
           <div class="card">
@@ -713,16 +738,19 @@
               <div class="accordion-list">
                 <article class="stack-item">
                   <div class="stack-top">
-                    <div class="stack-title">Worker protections and wage dynamics</div>
+                    <div class="stack-title">
+                      The Recent Evolution of Artificial Intelligence: labor, social, and regulatory implications
+                      <span class="stack-date">[PT-BR]</span>
+                    </div>
                   </div>
-                  <p><a href="https://example.com/published-article-1" target="_blank" rel="noopener noreferrer">Published article on the impact of labor protection policies on wages and employment.</a></p>
+                  <p><a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolução Recente da Inteligência Artificial: implicações trabalhistas, sociais e regulatórias.</a> (with José Paulo Zeetano Chahad). Ciência & Trópico, 48(1), 2024.</p>
                 </article>
-                <article class="stack-item">
+               <!-- <article class="stack-item">
                   <div class="stack-top">
                     <div class="stack-title">Labor market institutions in Brazil</div>
                   </div>
                   <p><a href="https://example.com/published-article-2" target="_blank" rel="noopener noreferrer">Peer-reviewed work analyzing institutional effects on Brazilian labor market outcomes.</a></p>
-                </article>
+                </article> -->  
               </div>
             </details>
           </div>
@@ -737,7 +765,7 @@
                 </div>
               </summary>
               <div class="accordion-list">
-                <article class="stack-item">
+                <!-- <article class="stack-item">
                   <div class="stack-top">
                     <div class="stack-title">Administrative data for occupational mobility</div>
                   </div>
@@ -748,6 +776,19 @@
                     <div class="stack-title">Legal action and employment outcomes</div>
                   </div>
                   <p><a href="https://example.com/working-paper-2" target="_blank" rel="noopener noreferrer">Analysis of labor market consequences following access to legal representation.</a></p>
+                </article> -->
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title">Labor Lawsuits as a Discrimination Tool in the Labor Market</div>
+                  </div>
+                  <p>Working paper with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a> on how labor lawsuits function as a discrimination mechanism in the labor market.</p>
+                </article>
+                <article class="stack-item">
+                  <div class="stack-top">
+                    <div class="stack-title"> The Impacts of Daylight Saving Time on Test Scores in Brazil</div>
+                  </div>
+                  <p>Working paper with João Bastos, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and Bruno Komatsu examining the
+                     effects of daylight saving time on student performance in Brazil’s main high-stakes standardized exam.</p>
                 </article>
               </div>
             </details>
@@ -759,7 +800,7 @@
             <details class="accordion-item">
               <summary>
                 <div class="accordion-summary-content">
-                  <span class="accordion-summary-title">Non-academic Writing</span>
+                  <span class="accordion-summary-title">Articles and Bulletins</span>
                 </div>
               </summary>
               <div class="accordion-list">
@@ -771,9 +812,16 @@
                 </article>
                 <article class="stack-item">
                   <div class="stack-top">
-                    <div class="stack-title">Op-ed on econometrics in education policy</div>
+                    <div class="stack-title"> <a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/"
+                       target="_blank" rel="noopener noreferrer">Avanços recentes da inteligência artificial: impactos trabalhistas, sociais e regulatórios</a></div>
+                    <span class="stack-label">Feb. 21, 2024</span>
+                    <span class="stack-date">[PT-BR]</span>
                   </div>
-                  <p><a href="https://example.com/op-ed-education" target="_blank" rel="noopener noreferrer">Non-academic piece highlighting empirical evidence for education reform.</a></p>
+                  <p>
+    
+                    Article in Jornal da USP, coauthored with José Paulo Zeetano Chahad, on the labor, social, and regulatory impacts of artificial intelligence.
+                    
+                  </p>
                 </article>
               </div>
             </details>
@@ -789,14 +837,14 @@
     <section id="teaching" class="section">
       <div class="container">
         <h2 class="section-title">Teaching</h2>
-        <p class="section-intro">
+        <!-- <p class="section-intro">
           Teaching experience, course materials, and selected academic support resources.
-        </p>
+        </p> -->
 
         <div class="stack">
           <article class="stack-item">
             <div class="stack-top">
-              <div class="stack-title">Teaching Assistant — Econometrics I</div>
+              <div class="stack-title">Teaching Assistant — Econometrics I (Undergraduate)</div>
               <div class="stack-date">Spring 2026</div>
             </div>
             <p>
@@ -808,12 +856,12 @@
 
           <article class="stack-item">
             <div class="stack-top">
-              <div class="stack-title">Teaching Assistant — Data Analysis for Policy</div>
+              <div class="stack-title">Teaching Assistant — Microeconomics II (Undergraduate)</div>
               <div class="stack-date">Fall 2025</div>
             </div>
             <p>
-              Assisted with lab sessions, Python data tutorials, and policy evaluation case studies
-              during the Fall 2025 semester.
+              Undergraduate teaching support for Microeconomics II, including exercise sessions,
+               problem-solving guidance, and the preparation of supplementary study materials during the Fall 2025 semester.
             </p>
           </article>
         </div>
