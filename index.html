@@ -232,19 +232,46 @@
     }
 
     .meta-row {
+      display: grid;
+      grid-template-columns: minmax(0, max-content) minmax(0, max-content);
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 6px 0 24px;
+    }
+
+    .meta-item {
+      border-top: 1px solid var(--line);
+      padding: 8px 14px 0 0;
+      min-width: 128px;
+    }
+
+    .meta-label {
+      display: block;
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1.3;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+    }
+
+    .meta-inline {
       display: flex;
       flex-wrap: wrap;
       gap: 8px 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin: 4px 0 22px;
     }
 
-    .meta-row span {
+    .meta-inline span {
       position: relative;
     }
 
-    .meta-row span:not(:last-child)::after {
+    .meta-inline span:not(:last-child)::after {
       content: "";
       position: absolute;
       top: 50%;
@@ -664,6 +691,10 @@
         gap: 12px;
       }
 
+      .meta-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       h1 {
         font-size: 2.25rem;
       }
@@ -704,10 +735,18 @@
           <span class="eyebrow">Economics Research</span>
           <h1>Tuffy Licciardi Issa</h1>
           <div class="meta-row">
-            <span>FEA-USP</span>
-            <span>Insper</span>
-            <span>IBIRA</span>
-            <span>S&atilde;o Paulo, Brazil</span>
+            <div class="meta-item">
+              <span class="meta-label">Affiliation</span>
+              <span class="meta-value meta-inline">
+                <span>FEA-USP</span>
+                <span>Insper</span>
+                <span>IBIRA</span>
+              </span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Location</span>
+              <span class="meta-value">S&atilde;o Paulo, Brazil</span>
+            </div>
           </div>
           <p>
             I am an economics student at FEA-USP with interests in applied microeconomics, econometrics, and development economics.
