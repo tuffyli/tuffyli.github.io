@@ -146,9 +146,9 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 32px;
-      align-items: start;
+      grid-template-columns: 1.45fr 0.72fr;
+      gap: 38px;
+      align-items: center;
     }
 
     .eyebrow {
@@ -172,7 +172,7 @@
     .hero p {
       color: var(--muted);
       font-size: 1.04rem;
-      max-width: 60ch;
+      max-width: 62ch;
       margin: 0 0 20px;  /* adjust spacing between paragraphs */
        text-align: justify;
         text-justify: inter-word;
@@ -224,17 +224,41 @@
     }
 
     .profile-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0 0 0 10px;
+      box-shadow: none;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 4px 0 22px;
+    }
+
+    .meta-row span {
+      position: relative;
+    }
+
+    .meta-row span:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--highlight);
     }
 
     .profile-photo {
       width: 100%;
       aspect-ratio: 4 / 4.6;
-      border-radius: 14px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #dfe7f3, #f3efe8);
       border: 1px solid var(--line);
       display: grid;
@@ -243,6 +267,7 @@
       font-size: 0.95rem;
       margin-bottom: 18px;
       overflow: hidden;
+      box-shadow: var(--shadow);
     }
 
     .mini-list {
@@ -262,6 +287,13 @@
       display: block;
       margin-bottom: 2px;
       font-weight: 600;
+    }
+
+    .profile-caption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-top: -6px;
     }
 
     /* ==============================================
@@ -386,6 +418,21 @@
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.5;
+    }
+
+    .stack-entry-meta {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .stack-description {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 92ch;
     }
 
     .stack-label {
@@ -543,6 +590,14 @@
       color: var(--muted);
     }
 
+    .accordion-list .stack-item .stack-description {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 92ch;
+    }
+
     .accordion-list .stack-item a {
       color: var(--text);
       text-decoration: none;
@@ -648,16 +703,16 @@
         <div>
           <span class="eyebrow">Economics Research</span>
           <h1>Tuffy Licciardi Issa</h1>
+          <div class="meta-row">
+            <span>FEA-USP</span>
+            <span>Insper</span>
+            <span>IBIRA</span>
+            <span>S&atilde;o Paulo, Brazil</span>
+          </div>
           <p>
-            I am Tuffy Licciardi Issa, an economics student at FEA-USP with interests in applied microeconomics, econometrics,
-            and development economics. My research focuses on crime, labor markets, and educational constraints in low- and
-            middle-income countries, with an emphasis on microeconomic analysis and policy evaluation. This website brings
-            together my research, teaching materials, curriculum vitae, and contact information.
-          </p>
-          <p>
-            My academic interests have been shaped by a multicultural background and a strong interest in connecting economic theory,
-            empirical methods, and social policy analysis. I also care deeply about transparent and reproducible research, and I
-            regularly share my workflows in R and LaTeX.
+            I am an economics student at FEA-USP with interests in applied microeconomics, econometrics, and development economics.
+            My research focuses on crime, labor markets, and educational constraints in low- and middle-income countries, with an
+            emphasis on microeconomic analysis and policy evaluation.
           </p>
 
           <div class="hero-actions">
@@ -676,21 +731,8 @@
              <img src="your-photo.jpg" alt="Tuffy Licciardi Issa" class="profile-photo">
              ============================================== -->
         <aside class="profile-card">
-		<img src="profile.jpg" alt="Tuffy Licciardi Issa" class="profile-photo">
-          <div class="mini-list">
-            <div>
-              <strong>Affiliation</strong>
-              University of S&atilde;o Paulo (FEA-USP), Insper, and IBIRA
-            </div>
-            <div>
-              <strong>Fields</strong>
-              Applied Econometrics, Labor Economics, Policy Evaluation, and Development Economics
-            </div>
-            <div>
-              <strong>Location</strong>
-              S&atilde;o Paulo, Brazil
-            </div>
-          </div>
+          <img src="profile.jpg" alt="Tuffy Licciardi Issa" class="profile-photo">
+          <div class="profile-caption">Applied econometrics, labor economics, policy evaluation, and development economics.</div>
         </aside>
       </div>
     </section>
@@ -784,8 +826,9 @@
                       <span class="stack-date">[PT-BR]</span>
                     </div>
                   </div>
-                  <p><a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial:
-                     implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias.</a> (with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>). Ci&ecirc;ncia &amp; Tr&oacute;pico, 48(1), 2024.</p>
+                  <p class="stack-entry"><a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial:
+                     implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias.</a></p>
+                  <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Ci&ecirc;ncia &amp; Tr&oacute;pico</em>, 48(1), 2024.</p>
                 </article>
                <!-- <article class="stack-item">
                   <div class="stack-top">
@@ -822,16 +865,16 @@
                 <article class="stack-item">
                   <div class="stack-top">
                     <div class="stack-title">Justice at a Cost: Labor Lawsuits and Employment Outcomes</div>
-                    <div class="stack-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a></div>
                   </div>
-                  <p>Working paper on how labor lawsuits function as a discrimination mechanism in the labor market.</p>
+                  <p class="stack-entry-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a>. Working paper.</p>
+                  <p class="stack-description">Examines how labor lawsuits function as a discrimination mechanism in the labor market.</p>
                 </article>
                 <article class="stack-item">
                   <div class="stack-top">
                     <div class="stack-title">The Impacts of Daylight Saving Time on Test Scores in Brazil</div>
-                    <div class="stack-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a></div>
                   </div>
-                  <p>Working paper examining the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
+                  <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>. Working paper.</p>
+                  <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
                 </article>
               </div>
             </details>
@@ -856,8 +899,9 @@
                 <article class="stack-item">
                   <p class="stack-entry">
                     <strong><a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></strong>
-                    <span class="lang-tag">[PT-BR]</span> with Jos&eacute; Paulo Zeetano Chahad. <em>Jornal da USP</em>, Feb. 21, 2024.
+                    <span class="lang-tag">[PT-BR]</span>
                   </p>
+                  <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Jornal da USP</em>, Feb. 21, 2024.</p>
                   <p class="stack-description">
                     Overview article on how artificial intelligence is reshaping labor markets, skill demand, inequality, social inclusion, and the broader regulatory debate.
                   </p>
@@ -866,8 +910,9 @@
                 <article class="stack-item">
                   <p class="stack-entry">
                     <strong><a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Hist&oacute;ria, Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte I - Aspectos Hist&oacute;ricos e Impactos no Mercado de Trabalho)</a></strong>
-                    <span class="lang-tag">[PT-BR]</span> with Jos&eacute; Paulo Zeetano Chahad. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 520, Jan. 2024.
+                    <span class="lang-tag">[PT-BR]</span>
                   </p>
+                  <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 520, Jan. 2024.</p>
                   <p class="stack-description">
                     Review article tracing the historical development of artificial intelligence and examining its effects on employment, job matching, and the evolving demand for skills in the labor market.
                   </p>
@@ -876,8 +921,9 @@
                 <article class="stack-item">
                   <p class="stack-entry">
                     <strong><a href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II - aspectos distributivos e alternativas de regula&ccedil;&atilde;o)</a></strong>
-                    <span class="lang-tag">[PT-BR]</span> with Jos&eacute; Paulo Zeetano Chahad. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 521, Feb. 2024.
+                    <span class="lang-tag">[PT-BR]</span>
                   </p>
+                  <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 521, Feb. 2024.</p>
                   <p class="stack-description">
                     Review article on the distributive and social consequences of artificial intelligence, with particular attention to regulation, public policy, and the role of collective bargaining in technological transition.
                   </p>
@@ -1063,4 +1109,3 @@
   </script>
 </body>
 </html>
-

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Suggestions | Tuffy Licciardi Issa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --paper: #ffffff;
+      --text: #1d1d1b;
+      --muted: #5e5a55;
+      --line: rgba(221, 216, 207, 0.8);
+      --accent: #19335a;
+      --accent-soft: #e9eef6;
+      --highlight: #7a6a58;
+      --max-width: 1040px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 243, 0.9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .page-note {
+      padding: 34px 0 6px;
+      color: var(--muted);
+      max-width: 78ch;
+    }
+
+    .page-note h1,
+    .option-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      color: var(--text);
+    }
+
+    .page-note h1 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+    }
+
+    .option {
+      padding: 42px 0 54px;
+      border-top: 1px solid var(--line);
+    }
+
+    .option-title {
+      margin: 0 0 22px;
+      font-size: 1.25rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--highlight);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .hero h2 {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.15;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 62ch;
+      margin: 0 0 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      border: 1px solid var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+      min-width: 140px;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .photo {
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 4px 0 22px;
+    }
+
+    .meta-row span {
+      position: relative;
+    }
+
+    .meta-row span:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--highlight);
+    }
+
+    .option-a .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.72fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .option-a .portrait-wrap {
+      padding-left: 10px;
+    }
+
+    .option-a .photo {
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .option-a .caption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    .option-b .hero-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 0.58fr 1.42fr;
+      gap: 30px;
+      padding: 26px;
+      align-items: center;
+    }
+
+    .option-b .photo {
+      border-radius: 10px;
+      aspect-ratio: 4 / 5;
+    }
+
+    .option-b .hero-actions {
+      margin-top: 22px;
+    }
+
+    .option-c .hero-grid {
+      display: grid;
+      grid-template-columns: 0.52fr 1.48fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .option-c .photo {
+      border-radius: 50%;
+      aspect-ratio: 1;
+      box-shadow: var(--shadow);
+    }
+
+    .option-c .field-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 24px 0 0;
+      max-width: 640px;
+    }
+
+    .option-c .field-list div {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .option-c .field-list strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    @media (max-width: 840px) {
+      .option-a .hero-grid,
+      .option-b .hero-panel,
+      .option-c .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .option-c .photo {
+        max-width: 260px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .option-b .hero-panel {
+        padding: 18px;
+      }
+
+      .option-c .field-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Tuffy Licciardi Issa</div>
+      <nav class="nav">
+        <a href="#option-a">Option A</a>
+        <a href="#option-b">Option B</a>
+        <a href="#option-c">Option C</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-note container">
+      <h1>First Section Visual Suggestions</h1>
+      <p>These keep your current academic style: same fonts, colors, buttons, spacing language, and restrained palette. The goal is only to make the opening section feel less boxed-in and more like an academic homepage.</p>
+    </section>
+
+    <section class="option option-a" id="option-a">
+      <div class="container">
+        <h2 class="option-title">Option A: Open Academic Header</h2>
+        <div class="hero hero-grid">
+          <div>
+            <span class="eyebrow">Economics Research</span>
+            <h2>Tuffy Licciardi Issa</h2>
+            <div class="meta-row">
+              <span>FEA-USP</span>
+              <span>Insper</span>
+              <span>IBIRA</span>
+              <span>S&atilde;o Paulo, Brazil</span>
+            </div>
+            <p>
+              I am an economics student at FEA-USP with interests in applied microeconomics, econometrics, and development economics. My research focuses on crime, labor markets, and educational constraints in low- and middle-income countries.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="index.html#research">View Research</a>
+              <a class="button secondary" href="index.html#cv">Download CV</a>
+              <a class="button secondary" href="mailto:tuffyissa@gmail.com">Email</a>
+            </div>
+          </div>
+          <aside class="portrait-wrap">
+            <img src="profile.jpg" alt="Tuffy Licciardi Issa" class="photo">
+            <div class="caption">Applied econometrics, labor economics, policy evaluation, and development economics.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="option option-b" id="option-b">
+      <div class="container">
+        <h2 class="option-title">Option B: Refined Profile Panel</h2>
+        <div class="hero hero-panel">
+          <img src="profile.jpg" alt="Tuffy Licciardi Issa" class="photo">
+          <div>
+            <span class="eyebrow">Economics Research</span>
+            <h2>Tuffy Licciardi Issa</h2>
+            <p>
+              I am an economics student at FEA-USP working on applied microeconomics, econometrics, and development economics, with a focus on crime, labor markets, education, and policy evaluation.
+            </p>
+            <div class="meta-row">
+              <span>University of S&atilde;o Paulo</span>
+              <span>Insper</span>
+              <span>IBIRA</span>
+            </div>
+            <div class="hero-actions">
+              <a class="button primary" href="index.html#research">View Research</a>
+              <a class="button secondary" href="index.html#cv">Download CV</a>
+              <a class="button secondary" href="mailto:tuffyissa@gmail.com">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="option option-c" id="option-c">
+      <div class="container">
+        <h2 class="option-title">Option C: Portrait First, Details Below</h2>
+        <div class="hero hero-grid">
+          <img src="profile.jpg" alt="Tuffy Licciardi Issa" class="photo">
+          <div>
+            <span class="eyebrow">Economics Research</span>
+            <h2>Tuffy Licciardi Issa</h2>
+            <p>
+              I study applied microeconomic questions related to crime, labor markets, education, and development. My work emphasizes empirical methods, policy evaluation, and transparent research workflows.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="index.html#research">View Research</a>
+              <a class="button secondary" href="index.html#cv">Download CV</a>
+              <a class="button secondary" href="mailto:tuffyissa@gmail.com">Email</a>
+            </div>
+            <div class="field-list">
+              <div><strong>Affiliation</strong>FEA-USP, Insper, and IBIRA</div>
+              <div><strong>Fields</strong>Labor, development, policy evaluation</div>
+              <div><strong>Methods</strong>Applied econometrics and causal inference</div>
+              <div><strong>Location</strong>S&atilde;o Paulo, Brazil</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

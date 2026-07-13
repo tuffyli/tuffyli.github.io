@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article Suggestions | Tuffy Licciardi Issa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --paper: #ffffff;
+      --text: #1d1d1b;
+      --muted: #5e5a55;
+      --line: rgba(221, 216, 207, 0.8);
+      --accent: #19335a;
+      --accent-soft: #e9eef6;
+      --highlight: #7a6a58;
+      --max-width: 1040px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 243, 0.9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .page-note {
+      padding: 34px 0 6px;
+      color: var(--muted);
+      max-width: 82ch;
+    }
+
+    .page-note h1,
+    .option-title,
+    .section-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      color: var(--text);
+    }
+
+    .page-note h1 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+    }
+
+    .option {
+      padding: 42px 0 54px;
+      border-top: 1px solid var(--line);
+    }
+
+    .option-title {
+      margin: 0 0 22px;
+      font-size: 1.25rem;
+    }
+
+    .section-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.22rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .description {
+      color: var(--muted);
+      margin: 8px 0 0;
+      font-size: 0.97rem;
+    }
+
+    .article-title {
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .article-title a {
+      color: var(--text);
+    }
+
+    .article-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .option-a .article-item {
+      display: grid;
+      grid-template-columns: 138px 1fr;
+      gap: 22px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .option-a .article-item:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .option-a .article-date {
+      color: var(--highlight);
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .option-a .article-date span {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .option-a .article-title {
+      font-size: 1.04rem;
+      margin-bottom: 6px;
+    }
+
+    .option-b .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .option-b .article-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px;
+      background: var(--paper);
+      min-height: 100%;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .option-b .article-title {
+      font-size: 1rem;
+    }
+
+    .option-b .source-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .option-b .source {
+      color: var(--highlight);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .option-c .article-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .option-c .article-item:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .option-c .article-title {
+      font-size: 1.03rem;
+      margin-bottom: 4px;
+    }
+
+    .option-c .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .option-c .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 600;
+      min-width: 74px;
+    }
+
+    .option-c .button.primary {
+      color: white;
+      background: var(--accent);
+    }
+
+    @media (max-width: 840px) {
+      .option-a .article-item,
+      .option-c .article-item {
+        grid-template-columns: 1fr;
+      }
+
+      .option-b .article-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .option-c .actions {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Tuffy Licciardi Issa</div>
+      <nav class="nav">
+        <a href="hero-suggestions.html">Hero Options</a>
+        <a href="#option-a">Option A</a>
+        <a href="#option-b">Option B</a>
+        <a href="#option-c">Option C</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-note container">
+      <h1>Articles Display Suggestions</h1>
+      <p>These options use the same colors, typography, and restrained academic feel as your site. The main improvement is hierarchy: title first, then venue/date/authors, then a short description.</p>
+    </section>
+
+    <section class="option option-a" id="option-a">
+      <div class="container">
+        <h2 class="option-title">Option A: Academic Bibliography List</h2>
+        <div class="section-card">
+          <h3 class="section-title">Articles and Bulletins</h3>
+          <div class="article-list">
+            <article class="article-item">
+              <div class="article-date">Feb. 2024<span>Jornal da USP</span></div>
+              <div>
+                <div class="article-title"><a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></div>
+                <div class="meta">[PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+                <p class="description">Overview article on how artificial intelligence is reshaping labor markets, skill demand, inequality, social inclusion, and the broader regulatory debate.</p>
+              </div>
+            </article>
+            <article class="article-item">
+              <div class="article-date">Jan. 2024<span>Informa&ccedil;&otilde;es FIPE</span></div>
+              <div>
+                <div class="article-title"><a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Hist&oacute;ria, Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte I)</a></div>
+                <div class="meta">[PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+                <p class="description">Review article tracing the historical development of artificial intelligence and examining its effects on employment, job matching, and skill demand.</p>
+              </div>
+            </article>
+            <article class="article-item">
+              <div class="article-date">Feb. 2024<span>Informa&ccedil;&otilde;es FIPE</span></div>
+              <div>
+                <div class="article-title"><a href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II)</a></div>
+                <div class="meta">[PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+                <p class="description">Review article on the distributive and social consequences of artificial intelligence, with attention to regulation, public policy, and collective bargaining.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="option option-b" id="option-b">
+      <div class="container">
+        <h2 class="option-title">Option B: Compact Cards</h2>
+        <div class="article-grid">
+          <article class="article-card">
+            <span class="tag">Article</span>
+            <div class="article-title"><a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></div>
+            <div class="source-row"><span class="source">Jornal da USP</span><span class="meta">Feb. 21, 2024</span></div>
+            <div class="meta">[PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+            <p class="description">Overview article on labor markets, skill demand, inequality, social inclusion, and regulation.</p>
+          </article>
+          <article class="article-card">
+            <span class="tag">Bulletin</span>
+            <div class="article-title"><a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Hist&oacute;ria, Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte I)</a></div>
+            <div class="source-row"><span class="source">Informa&ccedil;&otilde;es FIPE</span><span class="meta">v. 520, Jan. 2024</span></div>
+            <div class="meta">[PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+            <p class="description">Historical development of AI and its effects on employment, matching, and demand for skills.</p>
+          </article>
+          <article class="article-card">
+            <span class="tag">Bulletin</span>
+            <div class="article-title"><a href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II)</a></div>
+            <div class="source-row"><span class="source">Informa&ccedil;&otilde;es FIPE</span><span class="meta">v. 521, Feb. 2024</span></div>
+            <div class="meta">[PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+            <p class="description">Distributive and social consequences of AI, with attention to regulation and public policy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="option option-c" id="option-c">
+      <div class="container">
+        <h2 class="option-title">Option C: Action-Oriented List</h2>
+        <div class="section-card">
+          <h3 class="section-title">Articles and Bulletins</h3>
+          <div class="article-list">
+            <article class="article-item">
+              <div>
+                <div class="article-title">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</div>
+                <div class="meta">Jornal da USP, Feb. 21, 2024 · [PT-BR] · with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+                <p class="description">Overview article on how artificial intelligence is reshaping labor markets, skill demand, inequality, social inclusion, and the broader regulatory debate.</p>
+              </div>
+              <div class="actions">
+                <a class="button primary" href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Read</a>
+              </div>
+            </article>
+            <article class="article-item">
+              <div>
+                <div class="article-title">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Hist&oacute;ria, Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte I)</div>
+                <div class="meta">Informa&ccedil;&otilde;es FIPE, v. 520, Jan. 2024 · [PT-BR] · with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+                <p class="description">Review article tracing the historical development of artificial intelligence and examining its effects on employment, job matching, and skill demand.</p>
+              </div>
+              <div class="actions">
+                <a class="button primary" href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+              </div>
+            </article>
+            <article class="article-item">
+              <div>
+                <div class="article-title">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II)</div>
+                <div class="meta">Informa&ccedil;&otilde;es FIPE, v. 521, Feb. 2024 · [PT-BR] · with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a></div>
+                <p class="description">Review article on the distributive and social consequences of artificial intelligence, with attention to regulation, public policy, and collective bargaining.</p>
+              </div>
+              <div class="actions">
+                <a class="button primary" href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Section Suggestions | Tuffy Licciardi Issa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --paper: #ffffff;
+      --text: #1d1d1b;
+      --muted: #5e5a55;
+      --line: rgba(221, 216, 207, 0.8);
+      --accent: #19335a;
+      --accent-soft: #e9eef6;
+      --highlight: #7a6a58;
+      --max-width: 1040px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 243, 0.9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand,
+    .page-note h1,
+    .section-title,
+    .option-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+    }
+
+    .brand { font-size: 1rem; }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .page-note {
+      padding: 34px 0 6px;
+      color: var(--muted);
+      max-width: 86ch;
+    }
+
+    .page-note h1 {
+      color: var(--text);
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+    }
+
+    .option {
+      padding: 42px 0 54px;
+      border-top: 1px solid var(--line);
+    }
+
+    .option-title {
+      color: var(--text);
+      margin: 0 0 20px;
+      font-size: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.65rem;
+      margin: 0 0 24px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .accordion-group { margin-top: 24px; }
+    .accordion-group:first-of-type { margin-top: 0; }
+
+    .accordion-item {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+    }
+
+    .accordion-item summary {
+      cursor: pointer;
+      padding: 6px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      font-weight: 700;
+      list-style: none;
+      color: var(--text);
+      background: transparent;
+      outline: none;
+      border: none;
+    }
+
+    .accordion-item summary:hover {
+      color: var(--accent);
+      background: rgba(25, 51, 90, 0.04);
+    }
+
+    .accordion-item summary::-webkit-details-marker { display: none; }
+
+    .accordion-item summary::after {
+      content: "+";
+      font-size: 1.35rem;
+      color: var(--highlight);
+      justify-self: end;
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-item[open] summary::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .accordion-summary-content {
+      display: grid;
+      gap: 3px;
+    }
+
+    .accordion-summary-title {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .accordion-summary-subtitle {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .accordion-list {
+      display: grid;
+      gap: 0;
+      padding: 0 20px;
+      background: transparent;
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      will-change: height, opacity, transform;
+      transition: height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .accordion-item[open] .accordion-list {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .entry {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+
+    .entry:last-child { border-bottom: none; }
+
+    .pub-title {
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.45;
+      margin: 0 0 5px;
+    }
+
+    .pub-title a { color: var(--text); }
+
+    .pub-meta,
+    .pub-note,
+    .pub-citation {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .pub-note { margin-top: 8px; }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .layout-a .entry {
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      gap: 22px;
+    }
+
+    .side-date {
+      color: var(--highlight);
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .side-date span {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .layout-b .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .layout-b .pub-type {
+      color: var(--highlight);
+      font-size: 0.88rem;
+      font-weight: 500;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .layout-c .entry {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .layout-c .entry::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 24px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--highlight);
+    }
+
+    .layout-c .pub-citation {
+      color: var(--text);
+    }
+
+    .layout-c .pub-title {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .layout-a .entry,
+      .layout-b .entry {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .accordion-list {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Tuffy Licciardi Issa</div>
+      <nav class="nav">
+        <a href="#a">Suggestion A</a>
+        <a href="#b">Suggestion B</a>
+        <a href="#c">Suggestion C</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-note container">
+      <h1>Research Section Layout Suggestions</h1>
+      <p>All three suggestions preserve the animated accordion behavior and keep Articles and Bulletins initially closed, just like your current website. Only the internal organization changes.</p>
+    </section>
+
+    <section class="option layout-a" id="a">
+      <div class="container">
+        <h2 class="option-title">Suggestion A: Date-Led Bibliography</h2>
+        <h3 class="section-title">Research</h3>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Published Articles</span><span class="accordion-summary-subtitle">Peer-reviewed and journal publications</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry">
+                  <div class="side-date">2024<span>Published</span></div>
+                  <div>
+                    <div class="pub-title"><a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial: implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias</a></div>
+                    <p class="pub-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Ci&ecirc;ncia &amp; Tr&oacute;pico</em>, 48(1). [PT-BR]</p>
+                    <p class="pub-note">Article on recent advances in artificial intelligence and their labor, social, and regulatory implications.</p>
+                  </div>
+                </article>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Working Papers</span><span class="accordion-summary-subtitle">Manuscripts and research in progress</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><div class="side-date">Working paper<span>Labor</span></div><div><div class="pub-title">Justice at a Cost: Labor Lawsuits and Employment Outcomes</div><p class="pub-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a>.</p><p class="pub-note">Working paper on how labor lawsuits function as a discrimination mechanism in the labor market.</p></div></article>
+                <article class="entry"><div class="side-date">Working paper<span>Education</span></div><div><div class="pub-title">The Impacts of Daylight Saving Time on Test Scores in Brazil</div><p class="pub-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>.</p><p class="pub-note">Working paper examining the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p></div></article>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item">
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Articles and Bulletins</span><span class="accordion-summary-subtitle">Public-facing writing and policy discussion</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><div class="side-date">Feb. 2024<span>Jornal da USP</span></div><div><div class="pub-title"><a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></div><p class="pub-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. [PT-BR]</p></div></article>
+                <article class="entry"><div class="side-date">Jan. 2024<span>FIPE</span></div><div><div class="pub-title"><a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial... (Parte I)</a></div><p class="pub-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 520. [PT-BR]</p></div></article>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="option layout-b" id="b">
+      <div class="container">
+        <h2 class="option-title">Suggestion B: Title-First Academic List</h2>
+        <h3 class="section-title">Research</h3>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Published Articles</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><div><div class="pub-title"><a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial: implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias</a></div><p class="pub-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Ci&ecirc;ncia &amp; Tr&oacute;pico</em>, 48(1), 2024. [PT-BR]</p></div><div class="pub-type">2024</div></article>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Working Papers</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><div><div class="pub-title">Justice at a Cost: Labor Lawsuits and Employment Outcomes</div><p class="pub-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a>. Working paper.</p><p class="pub-note">Examines how labor lawsuits function as a discrimination mechanism in the labor market.</p></div><div class="pub-type">Labor</div></article>
+                <article class="entry"><div><div class="pub-title">The Impacts of Daylight Saving Time on Test Scores in Brazil</div><p class="pub-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>. Working paper.</p><p class="pub-note">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p></div><div class="pub-type">Education</div></article>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item">
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Articles and Bulletins</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><div><div class="pub-title"><a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></div><p class="pub-meta"><em>Jornal da USP</em>, Feb. 21, 2024. [PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>.</p></div><div class="pub-type">Article</div></article>
+                <article class="entry"><div><div class="pub-title"><a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial... (Parte I)</a></div><p class="pub-meta"><em>Informa&ccedil;&otilde;es FIPE</em>, v. 520, Jan. 2024. [PT-BR] with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>.</p></div><div class="pub-type">Bulletin</div></article>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="option layout-c" id="c">
+      <div class="container">
+        <h2 class="option-title">Suggestion C: CV-Style Citation With Notes</h2>
+        <h3 class="section-title">Research</h3>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Published Articles</span><span class="accordion-summary-subtitle">Citation style first, notes second</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><p class="pub-citation">Licciardi Issa, T., and <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Chahad, J. P. Z.</a> 2024. <a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial: implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias</a>. <em>Ci&ecirc;ncia &amp; Tr&oacute;pico</em>, 48(1). [PT-BR]</p><p class="pub-note">Article on labor, social, and regulatory implications of recent AI advances.</p></article>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item" open>
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Working Papers</span><span class="accordion-summary-subtitle">Compact academic CV format</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><p class="pub-citation">Licciardi Issa, T., and <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Souza, D.</a> <em>Justice at a Cost: Labor Lawsuits and Employment Outcomes</em>. Working paper.</p><p class="pub-note">Studies how labor lawsuits function as a discrimination mechanism in the labor market.</p></article>
+                <article class="entry"><p class="pub-citation">Licciardi Issa, T., Bastos, J., Menezes Filho, N., and Komatsu, B. <em>The Impacts of Daylight Saving Time on Test Scores in Brazil</em>. Working paper.</p><p class="pub-note">Examines effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p></article>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="card">
+            <details class="accordion-item">
+              <summary><div class="accordion-summary-content"><span class="accordion-summary-title">Articles and Bulletins</span><span class="accordion-summary-subtitle">Public and policy-facing writing</span></div></summary>
+              <div class="accordion-list">
+                <article class="entry"><p class="pub-citation">Licciardi Issa, T., and <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Chahad, J. P. Z.</a> 2024. <a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a>. <em>Jornal da USP</em>, Feb. 21. [PT-BR]</p></article>
+                <article class="entry"><p class="pub-citation">Licciardi Issa, T., and <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Chahad, J. P. Z.</a> 2024. <a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial... (Parte I)</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 520. [PT-BR]</p></article>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    const setAccordionHeight = (item) => {
+      const content = item.querySelector(".accordion-list");
+      if (!content) return;
+      content.style.height = item.open ? content.scrollHeight + "px" : "0px";
+    };
+
+    accordionItems.forEach((item) => {
+      const summary = item.querySelector("summary");
+      const content = item.querySelector(".accordion-list");
+      if (!summary || !content) return;
+
+      setAccordionHeight(item);
+
+      summary.addEventListener("click", (event) => {
+        event.preventDefault();
+        const opening = !item.open;
+
+        if (opening) {
+          item.open = true;
+          content.style.height = "0px";
+          requestAnimationFrame(() => {
+            content.style.height = content.scrollHeight + "px";
+          });
+
+          const onOpenTransitionEnd = (transitionEvent) => {
+            if (transitionEvent.propertyName !== "height") return;
+            content.style.height = "auto";
+            content.removeEventListener("transitionend", onOpenTransitionEnd);
+          };
+
+          content.addEventListener("transitionend", onOpenTransitionEnd);
+          return;
+        }
+
+        content.style.height = content.scrollHeight + "px";
+        requestAnimationFrame(() => {
+          content.style.height = "0px";
+        });
+
+        const onTransitionEnd = (transitionEvent) => {
+          if (transitionEvent.propertyName !== "height") return;
+          item.open = false;
+          content.removeEventListener("transitionend", onTransitionEnd);
+        };
+
+        content.addEventListener("transitionend", onTransitionEnd);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      accordionItems.forEach((item) => {
+        if (item.open) setAccordionHeight(item);
+      });
+    });
+  </script>
+</body>
+</html>
