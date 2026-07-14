@@ -316,13 +316,6 @@
       font-weight: 600;
     }
 
-    .profile-caption {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      margin-top: -6px;
-    }
-
     /* ==============================================
        GENERAL SECTION LAYOUT
        ============================================== */
@@ -355,6 +348,11 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
+    }
+
+    .about-interest {
+      grid-template-columns: minmax(0, 1fr);
+      margin-bottom: 8px;
     }
 
     .card {
@@ -757,7 +755,7 @@
           <div class="hero-actions">
             <!-- EDIT 9: replace these links with your real files/pages -->
             <a class="button primary" href="#research">View Research</a>
-            <a class="button secondary" href="#cv">Download CV</a>
+            <a class="button secondary" href="cv.html">View CV</a>
             <a class="button secondary" href="mailto:tuffyissa@gmail.com">Email</a>
 
           </div>
@@ -771,7 +769,6 @@
              ============================================== -->
         <aside class="profile-card">
           <img src="profile.jpg" alt="Tuffy Licciardi Issa" class="profile-photo">
-          <div class="profile-caption">Applied econometrics, labor economics, policy evaluation, and development economics.</div>
         </aside>
       </div>
     </section>
@@ -792,6 +789,16 @@
          My academic perspective has also been shaped by a multicultural background and by interests that extend beyond economics alone.
           I care deeply about clear thinking, rigorous empirical work, and reproducible research practices, and I regularly use and share workflows in R and LaTeX.
         </p>
+        <div class="card-grid about-interest">
+          <article class="card">
+            <span class="tag">Research Interests</span>
+            <h3>Applied Microeconomics</h3>
+            <p>
+              Applied econometrics, labor economics, policy evaluation, and development economics, with interests in crime,
+              education, and institutional constraints in low- and middle-income contexts.
+            </p>
+          </article>
+        </div>
 <!--        <div class="card-grid">
           <article class="card">
             <span class="tag">Research Interests</span>
@@ -1024,8 +1031,8 @@
         <h2 class="section-title">Curriculum Vitae</h2>
         <div class="card">
           <p>
-            A current version of my CV can be downloaded here:
-            <a href="Tuffy_Licciardi_Issa_CV.pdf" target="_blank" rel="noopener noreferrer" download>Download CV</a>
+            A current version of my CV can be viewed here:
+            <a href="cv.html">Open CV</a>
           </p>
           <p>
             Portuguese Lattes profile:

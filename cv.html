@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV | Tuffy Licciardi Issa</title>
+  <meta name="description" content="Curriculum Vitae of Tuffy Licciardi Issa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --paper: #ffffff;
+      --text: #1d1d1b;
+      --muted: #5e5a55;
+      --line: rgba(221, 216, 207, 0.8);
+      --accent: #19335a;
+      --accent-soft: #e9eef6;
+      --max-width: 1040px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 243, 0.9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .section {
+      padding: 34px 0 40px;
+    }
+
+    .section-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1.65rem;
+      margin: 0 0 14px;
+    }
+
+    .viewer-shell {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .viewer-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.94rem;
+      flex-wrap: wrap;
+    }
+
+    .pdf-frame {
+      display: block;
+      width: 100%;
+      height: calc(100vh - 190px);
+      min-height: 620px;
+      border: 0;
+      background: var(--paper);
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .pdf-frame {
+        height: calc(100vh - 230px);
+        min-height: 520px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">Tuffy Licciardi Issa</a>
+      <nav class="nav">
+        <a href="index.html#about">About</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#teaching">Teaching</a>
+        <a href="cv.html">CV</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">Curriculum Vitae</h1>
+      <div class="viewer-shell">
+        <div class="viewer-toolbar">
+          <span>Tuffy Licciardi Issa CV</span>
+          <a href="Tuffy_Licciardi_Issa_CV.pdf" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a>
+        </div>
+        <iframe class="pdf-frame" src="Tuffy_Licciardi_Issa_CV.pdf" title="Tuffy Licciardi Issa CV"></iframe>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
