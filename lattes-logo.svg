@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Lattes profile</title>
+  <circle cx="48" cy="48" r="46" fill="#e9eef6"/>
+  <path d="M25 24h12v38h28v10H25z" fill="#19335a"/>
+</svg>

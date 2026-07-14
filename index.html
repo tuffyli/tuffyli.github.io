@@ -21,6 +21,7 @@
   <meta property="og:title" content="Tuffy Licciardi Issa | Academic Website" />
   <meta property="og:description" content="Research, teaching, CV, and contact information." />
   <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <!--
     ==============================================
@@ -388,6 +389,79 @@
       margin-bottom: 12px;
     }
 
+    .profile-link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .profile-link {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .profile-link:hover {
+      background: var(--accent-soft);
+      border-color: rgba(25, 51, 90, 0.26);
+      box-shadow: 0 8px 22px rgba(25, 51, 90, 0.08);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .profile-link:hover .profile-link-title {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .profile-link:hover .profile-icon {
+      background: var(--paper);
+    }
+
+    .profile-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .profile-icon svg {
+      width: 21px;
+      height: 21px;
+      stroke-width: 1.9;
+    }
+
+    .profile-icon img {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    .profile-link-title {
+      display: block;
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    .profile-link-text {
+      display: block;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
     /* ==============================================
        TIMELINE / TEACHING / PROJECTS LISTS
        ============================================== */
@@ -510,7 +584,7 @@
 
     .accordion-item summary {
       cursor: pointer;
-      padding: 6px 0;
+      padding: 8px 10px;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 12px;
@@ -521,13 +595,22 @@
       background: transparent;
       outline: none;
       border: none;
-      border-radius: 0;
+      border-radius: 8px;
       box-shadow: none;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     .accordion-item summary:hover {
       color: var(--accent);
-      background: rgba(25, 51, 90, 0.04);
+      background: var(--accent-soft);
+    }
+
+    .accordion-item summary:hover .accordion-summary-title {
+      color: var(--accent);
+    }
+
+    .accordion-item summary:hover::after {
+      color: var(--accent);
     }
 
     .accordion-item summary::-webkit-details-marker {
@@ -545,6 +628,11 @@
     .accordion-item[open] summary::after {
       content: '-';
       transform: rotate(180deg);
+    }
+
+    .accordion-item.is-closing summary::after {
+      content: '+';
+      transform: rotate(0deg);
     }
 
     .accordion-summary-content {
@@ -670,7 +758,8 @@
     @media (max-width: 900px) {
       .hero-grid,
       .contact-box,
-      .card-grid {
+      .card-grid,
+      .profile-link-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1029,15 +1118,30 @@
     <section id="cv" class="section">
       <div class="container">
         <h2 class="section-title">Curriculum Vitae</h2>
-        <div class="card">
-          <p>
-            A current version of my CV can be viewed here:
-            <a href="cv.html">Open CV</a>
-          </p>
-          <p>
-            Portuguese Lattes profile:
-            <a href="http://lattes.cnpq.br/2712997099346862" target="_blank" rel="noopener noreferrer">View my Lattes profile</a>
-          </p>
+        <div class="profile-link-grid">
+          <a class="card profile-link" href="cv.html">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M7 3h7l5 5v13H7z"></path>
+                <path d="M14 3v5h5"></path>
+                <path d="M9 13h6"></path>
+                <path d="M9 17h6"></path>
+              </svg>
+            </span>
+            <span>
+              <span class="profile-link-title">Curriculum Vitae</span>
+              <span class="profile-link-text">View my CV inside the site with the navigation header preserved.</span>
+            </span>
+          </a>
+          <a class="card profile-link" href="http://lattes.cnpq.br/2712997099346862" target="_blank" rel="noopener noreferrer">
+            <span class="profile-icon" aria-hidden="true">
+              <img src="lattes-logo.svg" alt="">
+            </span>
+            <span>
+              <span class="profile-link-title">Lattes Profile</span>
+              <span class="profile-link-text">Portuguese academic profile with formal Brazilian research records.</span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -1108,6 +1212,7 @@
         const opening = !item.open;
 
         if (opening) {
+          item.classList.remove("is-closing");
           item.open = true;
           content.style.height = "0px";
           requestAnimationFrame(() => {
@@ -1127,6 +1232,7 @@
           return;
         }
 
+        item.classList.add("is-closing");
         content.style.height = content.scrollHeight + "px";
         requestAnimationFrame(() => {
           content.style.height = "0px";
@@ -1138,6 +1244,7 @@
           }
 
           item.open = false;
+          item.classList.remove("is-closing");
           content.removeEventListener("transitionend", onTransitionEnd);
         };
 
