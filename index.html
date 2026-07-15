@@ -356,6 +356,45 @@
       margin-bottom: 8px;
     }
 
+    .interest-panel {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      max-width: 920px;
+    }
+
+    .interest-panel h3 {
+      margin: 0 0 12px;
+      font-size: 1.08rem;
+      color: var(--text);
+    }
+
+    .interest-kicker {
+      display: block;
+      color: var(--highlight);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .interest-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .interest-list li {
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+    }
+
     .card {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -498,6 +537,33 @@
       color: var(--text);
     }
 
+    .linked-title {
+      color: var(--text);
+      text-decoration: none;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .linked-title:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .linked-title[target="_blank"]::after {
+      content: " \2197";
+      color: var(--muted);
+      font-size: 0.85em;
+      font-weight: 500;
+    }
+
+    .translation-note {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+      font-style: italic;
+    }
+
     .stack-entry strong {
       font-weight: 700;
     }
@@ -520,14 +586,14 @@
     }
 
     .stack-entry-meta {
-      margin: 4px 0 0;
+      margin: 6px 0 0;
       color: var(--muted);
       font-size: 0.93rem;
       line-height: 1.55;
     }
 
     .stack-description {
-      margin-top: 8px;
+      margin-top: 11px;
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.65;
@@ -553,6 +619,77 @@
     .stack-item p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .teaching-list {
+      display: grid;
+      gap: 0;
+      max-width: 980px;
+    }
+
+    .teaching-item {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 22px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .teaching-date {
+      color: var(--highlight);
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .teaching-date span {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .teaching-title {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.02rem;
+      line-height: 1.45;
+      margin-bottom: 4px;
+    }
+
+    .teaching-meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+      margin: 0 0 8px;
+    }
+
+    .teaching-description {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border: 1px solid rgba(25, 51, 90, 0.18);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.3;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .resource-link:hover {
+      background: var(--accent-soft);
+      border-color: rgba(25, 51, 90, 0.3);
+      text-decoration: none;
     }
 
     .accordion {
@@ -703,8 +840,18 @@
       color: var(--muted);
     }
 
+    .accordion-list .stack-item .stack-entry {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .accordion-list .stack-item .translation-note,
+    .accordion-list .stack-item .stack-entry-meta {
+      margin-top: 6px;
+    }
+
     .accordion-list .stack-item .stack-description {
-      margin-top: 10px;
+      margin-top: 11px;
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.65;
@@ -718,6 +865,18 @@
 
     .accordion-list .stack-item a:hover {
       text-decoration: underline;
+    }
+
+    .accordion-list .stack-item .linked-title:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .accordion-list .stack-item .linked-title[target="_blank"]::after {
+      content: " \2197";
+      color: var(--muted);
+      font-size: 0.85em;
+      font-weight: 500;
     }
 
     .accordion-card a {
@@ -782,6 +941,15 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .interest-list {
+        grid-template-columns: 1fr;
+      }
+
+      .teaching-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
       h1 {
         font-size: 2.25rem;
       }
@@ -819,7 +987,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">BA Student</span>
+          <span class="eyebrow">Economics Student</span>
           <h1>Tuffy Licciardi Issa</h1>
           <div class="meta-row">
             <div class="meta-item">
@@ -878,14 +1046,18 @@
          My academic perspective has also been shaped by a multicultural background and by interests that extend beyond economics alone.
           I care deeply about clear thinking, rigorous empirical work, and reproducible research practices, and I regularly use and share workflows in R and LaTeX.
         </p>
-        <div class="card-grid about-interest">
-          <article class="card">
-            <span class="tag">Research Interests</span>
+        <div class="about-interest">
+          <article class="interest-panel">
+            <span class="interest-kicker">Research Interests</span>
             <h3>Applied Microeconomics</h3>
-            <p>
-              Applied econometrics, labor economics, policy evaluation, and development economics, with interests in crime,
-              education, and institutional constraints in low- and middle-income contexts.
-            </p>
+            <ul class="interest-list">
+              <li>Labor Economics</li>
+              <li>Development Economics</li>
+              <li>Economics of Education</li>
+              <li>Economics of Crime</li>
+              <li>Public Economics</li>
+              <li>Law and Economics</li>
+            </ul>
           </article>
         </div>
 <!--        <div class="card-grid">
@@ -955,15 +1127,13 @@
               </summary>
               <div class="accordion-list">
                 <article class="stack-item">
-                  <div class="stack-top">
-                    <div class="stack-title">
-                      The Recent Evolution of Artificial Intelligence: labor, social, and regulatory implications
-                      <span class="stack-date">[PT-BR]</span>
-                    </div>
-                  </div>
-                  <p class="stack-entry"><a href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial:
-                     implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias.</a></p>
+                  <p class="stack-entry"><strong><a class="linked-title" href="https://periodicos.fundaj.gov.br/CIC/article/view/2278" target="_blank" rel="noopener noreferrer">A Evolu&ccedil;&atilde;o Recente da Intelig&ecirc;ncia Artificial:
+                     implica&ccedil;&otilde;es trabalhistas, sociais e regulat&oacute;rias</a></strong> <span class="lang-tag">[PT-BR]</span></p>
+                  <p class="translation-note">English title: The Recent Evolution of Artificial Intelligence: labor, social, and regulatory implications.</p>
                   <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Ci&ecirc;ncia &amp; Tr&oacute;pico</em>, 48(1), 2024.</p>
+                  <p class="stack-description">
+                    Published article on recent advances in artificial intelligence and their labor, social, and regulatory implications.
+                  </p>
                 </article>
                <!-- <article class="stack-item">
                   <div class="stack-top">
@@ -998,16 +1168,12 @@
                   <p><a href="https://example.com/working-paper-2" target="_blank" rel="noopener noreferrer">Analysis of labor market consequences following access to legal representation.</a></p>
                 </article> -->
                 <article class="stack-item">
-                  <div class="stack-top">
-                    <div class="stack-title">Justice at a Cost: Labor Lawsuits and Employment Outcomes</div>
-                  </div>
+                  <p class="stack-entry"><strong>Justice at a Cost: Labor Lawsuits and Employment Outcomes</strong></p>
                   <p class="stack-entry-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a>.</p>
                   <p class="stack-description">Examines how labor lawsuits function as a discrimination mechanism in the labor market.</p>
                 </article>
                 <article class="stack-item">
-                  <div class="stack-top">
-                    <div class="stack-title">The Impacts of Daylight Saving Time on Test Scores in Brazil</div>
-                  </div>
+                  <p class="stack-entry"><strong>The Impacts of Daylight Saving Time on Test Scores in Brazil</strong></p>
                   <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>.</p>
                   <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
                 </article>
@@ -1033,7 +1199,7 @@
                 </article> -->
                 <article class="stack-item">
                   <p class="stack-entry">
-                    <strong><a href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></strong>
+                    <strong><a class="linked-title" href="https://jornal.usp.br/artigos/avancos-recentes-da-inteligencia-artificial-impactos-trabalhistas-sociais-e-regulatorios/" target="_blank" rel="noopener noreferrer">Avan&ccedil;os recentes da intelig&ecirc;ncia artificial: impactos trabalhistas, sociais e regulat&oacute;rios</a></strong>
                     <span class="lang-tag">[PT-BR]</span>
                   </p>
                   <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Jornal da USP</em>, Feb. 21, 2024.</p>
@@ -1044,7 +1210,7 @@
 
                 <article class="stack-item">
                   <p class="stack-entry">
-                    <strong><a href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Hist&oacute;ria, Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte I - Aspectos Hist&oacute;ricos e Impactos no Mercado de Trabalho)</a></strong>
+                    <strong><a class="linked-title" href="https://downloads.fipe.org.br/publicacoes/bif/bif520-15-40.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Hist&oacute;ria, Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte I - Aspectos Hist&oacute;ricos e Impactos no Mercado de Trabalho)</a></strong>
                     <span class="lang-tag">[PT-BR]</span>
                   </p>
                   <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 520, Jan. 2024.</p>
@@ -1055,7 +1221,7 @@
 
                 <article class="stack-item">
                   <p class="stack-entry">
-                    <strong><a href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II - aspectos distributivos e alternativas de regula&ccedil;&atilde;o)</a></strong>
+                    <strong><a class="linked-title" href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II - aspectos distributivos e alternativas de regula&ccedil;&atilde;o)</a></strong>
                     <span class="lang-tag">[PT-BR]</span>
                   </p>
                   <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 521, Feb. 2024.</p>
@@ -1083,29 +1249,29 @@
           Teaching experience, course materials, and selected academic support resources.
         </p> -->
 
-        <div class="stack">
-          <article class="stack-item">
-            <div class="stack-top">
-              <div class="stack-title">Teaching Assistant - Econometrics I (Undergraduate, FEA/USP)</div>
-              <div class="stack-date">Spring 2026</div>
+        <div class="teaching-list">
+          <article class="teaching-item">
+            <div class="teaching-date">Spring 2026<span>FEA-USP</span></div>
+            <div>
+              <div class="teaching-title">Teaching Assistant - Econometrics I</div>
+              <p class="teaching-meta">Undergraduate course taught by Professor <a href="https://sites.google.com/view/andremancha/home" target="_blank" rel="noopener noreferrer">Andr&eacute; Mancha</a>.</p>
+              <p class="teaching-description">
+                Led exercise sessions, introduced R, and supported students with econometrics problem solving.
+              </p>
+              <a class="resource-link" href="https://github.com/tuffyli/TA-EAE1221-Econometria-I" target="_blank" rel="noopener noreferrer">Econometrics I GitHub repository</a>
             </div>
-            <p>
-              Undergraduate teaching support for Professor <a href="https://sites.google.com/view/andremancha/home" target="_blank" rel="noopener noreferrer">
-              Andr&eacute; Mancha</a> at FEA-USP, including leading exercise sessions, introducing R, and assisting with econometrics problem solving during the Spring 2026 semester.
-              Materials are available in the <a href="https://github.com/tuffyli/TA-EAE1221-Econometria-I" target="_blank" rel="noopener noreferrer">Econometrics I GitHub repository</a>.
-            </p>
-            </article>
+          </article>
 
-            <article class="stack-item">
-            <div class="stack-top">
-              <div class="stack-title">Teaching Assistant - Microeconomics II (Undergraduate, FEA/USP)</div>
-              <div class="stack-date">Fall 2025</div>
+          <article class="teaching-item">
+            <div class="teaching-date">Fall 2025<span>FEA-USP</span></div>
+            <div>
+              <div class="teaching-title">Teaching Assistant - Microeconomics II</div>
+              <p class="teaching-meta">Undergraduate course taught by Professor <a href="https://sites.google.com/view/felipeshalders/home" target="_blank" rel="noopener noreferrer">Felipe Shalders</a>.</p>
+              <p class="teaching-description">
+                Supported exercise sessions, problem-solving guidance, and preparation of supplementary study materials.
+              </p>
             </div>
-            <p>
-              Undergraduate teaching support for Microeconomics II at FEA-USP, taught by Professor <a href="https://sites.google.com/view/felipeshalders/home" target="_blank" rel="noopener noreferrer">
-              Felipe Shalders</a>, including exercise sessions, problem-solving guidance, and preparation of supplementary study materials during the Fall 2025 semester.
-            </p>
-            </article>
+          </article>
         </div>
       </div>
     </section>
@@ -1130,7 +1296,7 @@
             </span>
             <span>
               <span class="profile-link-title">Curriculum Vitae</span>
-              <span class="profile-link-text">View my CV inside the site with the navigation header preserved.</span>
+              <span class="profile-link-text">Academic CV with research, teaching, education, and professional experience.</span>
             </span>
           </a>
           <a class="card profile-link" href="http://lattes.cnpq.br/2712997099346862" target="_blank" rel="noopener noreferrer">
