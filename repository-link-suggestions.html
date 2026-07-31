@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repository Link Suggestions | Tuffy Licciardi Issa</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --paper: #ffffff;
+      --text: #1d1d1b;
+      --muted: #5e5a55;
+      --line: rgba(221, 216, 207, 0.52);
+      --accent: #19335a;
+      --accent-soft: #e9eef6;
+      --highlight: #7a6a58;
+      --max-width: 1240px;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 246, 243, 0.9);
+      border-bottom: 1px solid rgba(221, 216, 207, 0.8);
+    }
+
+    .topbar-inner {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      padding: 16px 0;
+      font-size: 0.94rem;
+      font-weight: 500;
+    }
+
+    main {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 54px 0 72px;
+    }
+
+    .intro {
+      max-width: 780px;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--highlight);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .option {
+      display: grid;
+      gap: 14px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .option-label h2 {
+      margin: 0;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1.14rem;
+      letter-spacing: 0;
+    }
+
+    .option-label span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .stack-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stack-entry {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .stack-entry strong {
+      font-weight: 700;
+    }
+
+    .stack-entry-meta {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .stack-description {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 92ch;
+    }
+
+    .linked-title {
+      color: var(--text);
+      text-decoration: none;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .linked-title:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .repo-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .repo-inline svg,
+    .repo-button svg,
+    .repo-meta svg,
+    .repo-icon-button svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 1.9;
+    }
+
+    .title-with-icon {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .title-with-icon .stack-entry {
+      min-width: 0;
+    }
+
+    .repo-icon-button {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      flex: 0 0 auto;
+      overflow: hidden;
+      transition: color 0.22s ease, border-color 0.22s ease;
+      z-index: 0;
+    }
+
+    .repo-icon-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      transform: translateY(101%);
+      transition: transform 0.24s ease;
+      z-index: -1;
+    }
+
+    .repo-icon-button:hover {
+      color: white;
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .repo-icon-button:hover::before {
+      transform: translateY(0);
+    }
+
+    .repo-row {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .repo-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-width: 144px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 9px 15px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      overflow: hidden;
+      transition: color 0.22s ease, border-color 0.22s ease;
+      z-index: 0;
+    }
+
+    .repo-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      transform: translateY(101%);
+      transition: transform 0.24s ease;
+      z-index: -1;
+    }
+
+    .repo-button:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    .repo-button:hover::before {
+      transform: translateY(0);
+    }
+
+    .repo-muted {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .resource-strip {
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .repo-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .repo-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .recommendation {
+      margin-top: 30px;
+      border-left: 3px solid var(--accent);
+      padding: 2px 0 2px 16px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .recommendation strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 1100px) {
+      .options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      main {
+        padding-top: 36px;
+      }
+
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      .option-label {
+        display: block;
+      }
+
+      .option-label span {
+        display: block;
+        margin-top: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="topbar-inner" aria-label="Suggestion navigation">
+      <a href="index.html">Back to site</a>
+      <a href="#option-a">Option A</a>
+      <a href="#option-b">Option B</a>
+      <a href="#option-c">Option C</a>
+      <a href="#option-d">Option D</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Research section suggestion</p>
+      <h1>Adding a code repository link</h1>
+      <p>Four ways to add the ENEM working paper repository while keeping the section academic, restrained, and easy to scan.</p>
+    </section>
+
+    <div class="options">
+      <section class="option" id="option-a">
+        <div class="option-label">
+          <h2>Option A: Inline Academic Resource</h2>
+          <span>Most discreet, best for a research list</span>
+        </div>
+        <article class="stack-item">
+          <p class="stack-entry"><strong>The Impacts of Daylight Saving Time on Test Scores in Brazil</strong></p>
+          <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>. <a class="repo-inline" href="#" aria-label="Code repository">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M9 19c-4 1.2-4-2-5-2.5"></path>
+              <path d="M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.3 11.3 0 0 0-6 0C7 3.8 6 4.1 6 4.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.6 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"></path>
+            </svg>
+            Code repository
+          </a></p>
+          <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
+        </article>
+      </section>
+
+      <section class="option" id="option-b">
+        <div class="option-label">
+          <h2>Option B: Resource Button Below</h2>
+          <span>Most visible without changing the title line</span>
+        </div>
+        <article class="stack-item">
+          <p class="stack-entry"><strong>The Impacts of Daylight Saving Time on Test Scores in Brazil</strong></p>
+          <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>.</p>
+          <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
+          <div class="repo-row">
+            <a class="repo-button" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M9 19c-4 1.2-4-2-5-2.5"></path>
+                <path d="M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.3 11.3 0 0 0-6 0C7 3.8 6 4.1 6 4.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.6 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"></path>
+              </svg>
+              Code repository
+            </a>
+            <span class="repo-muted">Replication materials and analysis code</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="option" id="option-c">
+        <div class="option-label">
+          <h2>Option C: Resource Strip</h2>
+          <span>Best if future papers may have paper, code, data, slides</span>
+        </div>
+        <article class="stack-item">
+          <p class="stack-entry"><strong>The Impacts of Daylight Saving Time on Test Scores in Brazil</strong></p>
+          <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>.</p>
+          <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
+          <div class="resource-strip" aria-label="Research materials">
+            <a class="repo-meta" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M9 19c-4 1.2-4-2-5-2.5"></path>
+                <path d="M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.3 11.3 0 0 0-6 0C7 3.8 6 4.1 6 4.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.6 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"></path>
+              </svg>
+              Code
+            </a>
+            <span class="repo-note">Repository link appears as part of a small materials line, so more resources can be added later without redesigning the entry.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="option" id="option-d">
+        <div class="option-label">
+          <h2>Option D: Small GitHub Icon Button</h2>
+          <span>Compact and visible, with very little extra text</span>
+        </div>
+        <article class="stack-item">
+          <div class="title-with-icon">
+            <p class="stack-entry"><strong>The Impacts of Daylight Saving Time on Test Scores in Brazil</strong></p>
+            <a class="repo-icon-button" href="#" aria-label="Code repository">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M9 19c-4 1.2-4-2-5-2.5"></path>
+                <path d="M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.3 11.3 0 0 0-6 0C7 3.8 6 4.1 6 4.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.6 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"></path>
+              </svg>
+            </a>
+          </div>
+          <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>.</p>
+          <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
+        </article>
+      </section>
+    </div>
+
+    <p class="recommendation"><strong>My recommendation:</strong> Option C is the most academic and future-proof if you expect more materials later. Option D is a strong alternative if you want the repository to be immediately discoverable without adding another text line.</p>
+  </main>
+</body>
+</html>
