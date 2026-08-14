@@ -330,7 +330,7 @@
 
     .meta-row {
       display: grid;
-      grid-template-columns: minmax(0, max-content) minmax(0, max-content);
+      grid-template-columns: repeat(3, minmax(0, max-content));
       gap: 16px;
       color: var(--muted);
       font-size: 0.95rem;
@@ -1162,6 +1162,25 @@
 
       .meta-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 14px;
+        font-size: 0.9rem;
+      }
+
+      .meta-row .meta-item:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .meta-item {
+        min-width: 0;
+        padding-right: 0;
+      }
+
+      .meta-label {
+        font-size: 0.72rem;
+      }
+
+      .meta-inline {
+        gap: 8px 16px;
       }
 
       .mobile-hero-heading {
@@ -1273,6 +1292,10 @@
               <span class="meta-label">Location</span>
               <span class="meta-value">S&atilde;o Paulo, Brazil</span>
             </div>
+            <div class="meta-item">
+              <span class="meta-label">From</span>
+              <span class="meta-value">S&atilde;o Paulo, Brazil</span>
+            </div>
           </div>
           <p>
             I am an economics student at FEA-USP with interests in applied microeconomics, econometrics, and development economics.
@@ -1322,7 +1345,7 @@
               <li>Development Economics</li>
               <li>Economics of Education</li>
               <li>Economics of Crime</li>
-              <li>Public Economics</li>
+              <li>Impact Evaluation</li>
               <li>Law and Economics</li>
             </ul>
           </article>
@@ -1474,7 +1497,7 @@
 
                 <article class="stack-item">
                   <p class="stack-entry">
-                    <strong><a class="linked-title" href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O est&aacute;gio atual da intelig&ecirc;ncia artificial: impactos no mercado de trabalho, aspectos sociais e alternativas de regula&ccedil;&atilde;o (Parte II - aspectos distributivos e alternativas de regula&ccedil;&atilde;o)</a></strong>
+                    <strong><a class="linked-title" href="https://downloads.fipe.org.br/publicacoes/bif/bif521-21-39.pdf" target="_blank" rel="noopener noreferrer">O Est&aacute;gio Atual da Intelig&ecirc;ncia Artificial: Impactos no Mercado de Trabalho, Aspectos Sociais e Alternativas de Regula&ccedil;&atilde;o (Parte II - Aspectos Distributivos e Alternativas de Regula&ccedil;&atilde;o)</a></strong>
                     <span class="lang-tag">[PT-BR]</span>
                   </p>
                   <p class="stack-entry-meta">with <a href="http://lattes.cnpq.br/3264550612036944" target="_blank" rel="noopener noreferrer">Jos&eacute; Paulo Zeetano Chahad</a>. <em>Informa&ccedil;&otilde;es FIPE</em>, v. 521, Feb. 2024.</p>
