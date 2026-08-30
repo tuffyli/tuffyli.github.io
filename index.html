@@ -94,8 +94,8 @@
       --line: rgba(221, 216, 207, 0.32);
       --accent: #19335a;   /* dark academic blue */
       --accent-soft: #e9eef6;
-      --primary-action: #2f67a8;
-      --primary-action-hover: #19335a;
+      --primary-action: #19335a;
+      --primary-action-hover: #102744;
       --highlight: #7a6a58; /* warm neutral for small details */
       --max-width: 1040px;
       --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
@@ -151,8 +151,8 @@
     }
 
     .topbar-inner {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 16px;
       padding: 16px 0;
@@ -170,6 +170,7 @@
       gap: 18px;
       flex-wrap: wrap;
       justify-content: center;
+      grid-column: 2;
     }
 
     .nav a {
@@ -179,6 +180,27 @@
 
     .nav a:hover {
       color: var(--accent);
+      text-decoration: none;
+    }
+
+    .language-switch {
+      grid-column: 3;
+      justify-self: end;
+      padding: 5px 9px;
+      border: 1px solid rgba(25, 51, 90, 0.32);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .language-switch:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
       text-decoration: none;
     }
 
@@ -695,6 +717,21 @@
       max-width: 92ch;
     }
 
+    .stack-status {
+      margin: 10px 0 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .stack-status strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
     .research-resource-link {
       display: inline-flex;
       align-items: center;
@@ -1010,6 +1047,11 @@
       max-width: 92ch;
     }
 
+    .accordion-list .stack-item .stack-status {
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
     .accordion-list .stack-item .research-resource-link {
       margin-left: 10px;
     }
@@ -1152,11 +1194,22 @@
 
     @media (max-width: 640px) {
       .topbar-inner {
-        justify-content: center;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
       }
 
       .nav {
-        gap: 12px;
+        grid-column: 1;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .nav a {
+        font-size: 0.86rem;
+      }
+
+      .language-switch {
+        grid-column: 2;
       }
 
       .meta-row {
@@ -1262,6 +1315,7 @@
         <a href="#cv">CV</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="language-switch" href="index.html?lang=pt-BR" lang="pt-BR" hreflang="pt-BR" aria-label="Ver esta p&aacute;gina em portugu&ecirc;s">PT-BR</a>
     </div>
   </header>
 
@@ -1436,25 +1490,25 @@
                   <p><a href="https://example.com/working-paper-2" target="_blank" rel="noopener noreferrer">Analysis of labor market consequences following access to legal representation.</a></p>
                 </article> -->
                 <article class="stack-item">
-                  <p class="stack-entry"><strong>Every Child Counts: Evidence from Brazil&rsquo;s FUNDEF-to-FUNDEB Transition in Municipal Preschools</strong></p>
-                  <p class="stack-entry-meta">with <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a> and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Kawaoka Komatsu</a>.</p>
-                  <p class="stack-description">Examines Brazil&rsquo;s FUNDEF-to-FUNDEB transition and municipal preschool outcomes.</p>
-                </article>
-                <article class="stack-item">
                   <p class="stack-entry"><strong>Justice at a Cost: Labor Lawsuits and Employment Outcomes</strong></p>
                   <p class="stack-entry-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a>.</p>
-                  <p class="stack-description">Examines how labor lawsuits function as a discrimination mechanism in the labor market.</p>
+                  <p class="stack-status"><strong class="status-label">Status:</strong> <span class="status-value">Draft coming soon.</span></p>
                 </article>
                 <article class="stack-item">
                   <p class="stack-entry"><strong>The Impacts of Daylight Saving Time on Test Scores in Brazil</strong></p>
                   <p class="stack-entry-meta">with <a href="https://www.linkedin.com/in/joaopedrobfa/" target="_blank" rel="noopener noreferrer">Jo&atilde;o Bastos</a>, <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a>, and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Komatsu</a>.</p>
-                  <p class="stack-description">Examines the effects of daylight saving time on student performance in Brazil's main high-stakes standardized exam.</p>
+                  <p class="stack-status"><strong class="status-label">Status:</strong> <span class="status-value">Draft coming soon.</span></p>
                   <a class="research-resource-link" href="https://github.com/tuffyli/DST-impact-on-ENEM-replication" target="_blank" rel="noopener noreferrer" aria-label="Code repository for The Impacts of Daylight Saving Time on Test Scores in Brazil">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.02c-3.22.7-3.9-1.38-3.9-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.57-.29-5.27-1.29-5.27-5.73 0-1.27.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19A10.98 10.98 0 0 1 12 6.04c.98 0 1.97.13 2.89.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.84 1.19 3.11 0 4.46-2.71 5.43-5.29 5.72.42.36.79 1.07.79 2.16v3.04c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"></path>
                     </svg>
                     Code repository
                   </a>
+                </article>
+                <article class="stack-item">
+                  <p class="stack-entry"><strong>Every Child Counts: Evidence from Brazil&rsquo;s FUNDEF-to-FUNDEB Transition in Municipal Preschools</strong></p>
+                  <p class="stack-entry-meta">with <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a> and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Kawaoka Komatsu</a>.</p>
+                  <p class="stack-status"><strong class="status-label">Status:</strong> <span class="status-value">Early-stage work in progress.</span></p>
                 </article>
               </div>
             </details>
@@ -1533,7 +1587,7 @@
             <div class="teaching-date">Spring 2026<span>FEA-USP</span></div>
             <div>
               <div class="teaching-title">Teaching Assistant - Econometrics I</div>
-              <p class="teaching-meta">Undergraduate course taught by Professor <a href="https://sites.google.com/view/andremancha/home" target="_blank" rel="noopener noreferrer">Andr&eacute; Mancha</a>.</p>
+              <p class="teaching-meta">Undergraduate course taught by Professor <a href="https://andre-mancha.github.io/" target="_blank" rel="noopener noreferrer">Andr&eacute; Mancha</a>.</p>
               <p class="teaching-description">
                 Led exercise sessions, introduced R, and supported students with econometrics problem solving.
               </p>
@@ -1657,6 +1711,142 @@
     </div>
   </footer>
   <script>
+    const pageParams = new URLSearchParams(window.location.search);
+    const portugueseActive = (pageParams.get("lang") || "").toLowerCase() === "pt-br";
+    const languageSwitch = document.querySelector(".language-switch");
+
+    const setText = (selector, text, index = 0) => {
+      const element = document.querySelectorAll(selector)[index];
+      if (element) {
+        element.textContent = text;
+      }
+    };
+
+    const setTexts = (selector, translations) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        if (translations[index]) {
+          element.textContent = translations[index];
+        }
+      });
+    };
+
+    const setLeadingText = (selector, translations) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        const textNode = Array.from(element.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+        if (textNode && translations[index]) {
+          textNode.textContent = translations[index];
+        }
+      });
+    };
+
+    const translateByText = (selector, translations) => {
+      document.querySelectorAll(selector).forEach((element) => {
+        const original = element.textContent.trim().replace(/\s+/g, " ");
+        if (translations[original]) {
+          element.textContent = translations[original];
+        }
+      });
+    };
+
+    if (portugueseActive) {
+      document.documentElement.lang = "pt-BR";
+      document.title = "Tuffy Licciardi Issa | Site Acadêmico";
+
+      const description = document.querySelector('meta[name="description"]');
+      if (description) {
+        description.content = "Tuffy Licciardi Issa é mestrando em Ciências Econômicas e Sociais na Università Bocconi. Seus interesses de pesquisa incluem microeconomia aplicada, economia do trabalho, crime, educação, desenvolvimento, econometria e avaliação de políticas públicas.";
+      }
+
+      if (languageSwitch) {
+        languageSwitch.textContent = "EN";
+        languageSwitch.href = "index.html";
+        languageSwitch.lang = "en";
+        languageSwitch.hreflang = "en";
+        languageSwitch.setAttribute("aria-label", "View this page in English");
+      }
+
+      setTexts(".nav a", ["Interesses", "Pesquisa", "Ensino", "CV", "Contato"]);
+      setText(".eyebrow", "Mestrando em Economia");
+      setTexts(".meta-label", ["Afiliações", "Localização", "Natural de"]);
+      setText(".meta-value", "Milão, Itália", 1);
+      setText(".meta-value", "São Paulo, Brasil", 2);
+
+      const heroIntroduction = document.querySelector(".hero-grid > div > p");
+      if (heroIntroduction) {
+        heroIntroduction.innerHTML = "Sou mestrando em Ciências Econômicas e Sociais na Universit&agrave; Bocconi, com interesses em microeconomia aplicada, econometria e economia do desenvolvimento. Minha pesquisa se concentra em crime, mercados de trabalho e restrições educacionais em países de renda baixa e média, com ênfase em análise microeconômica e avaliação de políticas públicas.";
+      }
+
+      setText(".hero-actions .button", "Ver pesquisa", 0);
+      setText(".hero-actions .button", "Ver CV", 1);
+      const emailButton = document.querySelector(".email-button");
+      if (emailButton) {
+        const emailLabel = Array.from(emailButton.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+        if (emailLabel) {
+          emailLabel.textContent = " E-mail";
+        }
+      }
+      const cvButton = document.querySelector('.hero-actions a[href="cv.html"]');
+      if (cvButton) {
+        cvButton.href = "cv.html?lang=pt-BR";
+      }
+
+      setTexts(".section-title", ["Interesses de Pesquisa", "Pesquisa", "Ensino", "Curriculum Vitae", "Contato"]);
+      setText(".interest-panel h3", "Microeconomia Aplicada");
+      setTexts(".interest-list li", ["Economia do Trabalho", "Economia do Desenvolvimento", "Economia da Educação", "Economia do Crime", "Avaliação de Impacto", "Direito e Economia"]);
+      setTexts(".accordion-summary-title", ["Artigos Publicados", "Trabalhos em Andamento", "Artigos e Boletins"]);
+      const translationNote = document.querySelector(".translation-note");
+      if (translationNote) {
+        translationNote.hidden = true;
+      }
+      setTexts(".status-value", ["Versão preliminar em breve.", "Versão preliminar em breve.", "Trabalho em fase inicial."]);
+
+      document.querySelectorAll(".stack-entry-meta").forEach((element) => {
+        element.childNodes.forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent = node.textContent
+              .replace(/^with\s+/, "com ")
+              .replace(/, and\s+/, " e ")
+              .replace(/\sand\s+/, " e ")
+              .replace(/Feb\./g, "fev.");
+          }
+        });
+      });
+
+      translateByText(".stack-description", {
+        "Published article on recent advances in artificial intelligence and their labor, social, and regulatory implications.": "Artigo publicado sobre avanços recentes em inteligência artificial e suas implicações trabalhistas, sociais e regulatórias.",
+        "Overview article on how artificial intelligence is reshaping labor markets, skill demand, inequality, social inclusion, and the broader regulatory debate.": "Artigo de divulgação sobre como a inteligência artificial está transformando os mercados de trabalho, a demanda por habilidades, a desigualdade, a inclusão social e o debate regulatório mais amplo.",
+        "Review article tracing the historical development of artificial intelligence and examining its effects on employment, job matching, and the evolving demand for skills in the labor market.": "Artigo de revisão que traça o desenvolvimento histórico da inteligência artificial e examina seus efeitos sobre o emprego, o pareamento entre trabalhadores e vagas e a evolução da demanda por habilidades no mercado de trabalho.",
+        "Review article on the distributive and social consequences of artificial intelligence, with particular attention to regulation, public policy, and the role of collective bargaining in technological transition.": "Artigo de revisão sobre as consequências distributivas e sociais da inteligência artificial, com atenção especial à regulação, às políticas públicas e ao papel da negociação coletiva na transição tecnológica."
+      });
+
+      const repositoryLink = document.querySelector(".research-resource-link");
+      if (repositoryLink) {
+        const labelNode = Array.from(repositoryLink.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+        if (labelNode) {
+          labelNode.textContent = " Repositório de código";
+        }
+        repositoryLink.setAttribute("aria-label", "Repositório de código do artigo sobre os impactos do horário de verão no ENEM");
+      }
+
+      setLeadingText(".teaching-date", ["1º semestre de 2026", "2º semestre de 2025"]);
+      setTexts(".teaching-title", ["Monitor de Econometria I", "Monitor de Microeconomia II"]);
+      setLeadingText(".teaching-meta", ["Disciplina de graduação ministrada pelo professor ", "Disciplina de graduação ministrada pelo professor "]);
+      setTexts(".teaching-description", ["Conduzi sessões de exercícios, introduzi o uso de R e auxiliei os estudantes na resolução de problemas de econometria.", "Auxiliei em sessões de exercícios, na orientação para resolução de problemas e na preparação de materiais complementares de estudo."]);
+      setText(".resource-link", "Repositório de Econometria I no GitHub");
+
+      setTexts(".profile-link-title", ["Curriculum Vitae", "Currículo Lattes"]);
+      setTexts(".profile-link-text", ["CV acadêmico com experiência em pesquisa, ensino, formação e atuação profissional.", "Perfil acadêmico em português com registros formais da produção científica brasileira."]);
+      const cvCard = document.querySelector('.profile-link[href="cv.html"]');
+      if (cvCard) {
+        cvCard.href = "cv.html?lang=pt-BR";
+      }
+
+      setText(".contact-box > .card:first-child > p", "Estou sempre aberto a conversas sobre pesquisa, ensino e colaboração acadêmica.");
+      setText(".contact-box > .card:last-child h3", "Notas sobre o site");
+      setText(".contact-box > .card:last-child p", "Este site está em desenvolvimento. Algumas seções continuarão sendo atualizadas à medida que meu portfólio de pesquisa e ensino evoluir. Se você tiver sugestões ou quiser colaborar, fique à vontade para entrar em contato.");
+      setText("footer .container", "© 2026 Tuffy Licciardi Issa. Desenvolvido para o GitHub Pages.");
+    }
+
     const accordionItems = document.querySelectorAll(".accordion-item");
 
     const setAccordionHeight = (item) => {
