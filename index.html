@@ -94,6 +94,8 @@
       --line: rgba(221, 216, 207, 0.32);
       --accent: #19335a;   /* dark academic blue */
       --accent-soft: #e9eef6;
+      --primary-action: #2f67a8;
+      --primary-action-hover: #19335a;
       --highlight: #7a6a58; /* warm neutral for small details */
       --max-width: 1040px;
       --shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
@@ -278,16 +280,17 @@
     }
 
     .button.primary {
-      background: var(--accent);
+      background: var(--primary-action);
+      border-color: var(--primary-action);
       color: white;
     }
 
     .button.primary::before {
-      background: #102744;
+      background: var(--primary-action-hover);
     }
 
     .button.primary:hover {
-      border-color: #102744;
+      border-color: var(--primary-action-hover);
       text-decoration: none;
     }
 
@@ -1432,6 +1435,11 @@
                   </div>
                   <p><a href="https://example.com/working-paper-2" target="_blank" rel="noopener noreferrer">Analysis of labor market consequences following access to legal representation.</a></p>
                 </article> -->
+                <article class="stack-item">
+                  <p class="stack-entry"><strong>Every Child Counts: Evidence from Brazil&rsquo;s FUNDEF-to-FUNDEB Transition in Municipal Preschools</strong></p>
+                  <p class="stack-entry-meta">with <a href="https://sites.google.com/view/naercio-menezes-filho/home-page" target="_blank" rel="noopener noreferrer">Naercio Menezes Filho</a> and <a href="https://www.insper.edu.br/pt/docentes/bruno-kawaoka-komatsu" target="_blank" rel="noopener noreferrer">Bruno Kawaoka Komatsu</a>.</p>
+                  <p class="stack-description">Examines Brazil&rsquo;s FUNDEF-to-FUNDEB transition and municipal preschool outcomes.</p>
+                </article>
                 <article class="stack-item">
                   <p class="stack-entry"><strong>Justice at a Cost: Labor Lawsuits and Employment Outcomes</strong></p>
                   <p class="stack-entry-meta">with <a href="https://www.danilosouza.com" target="_blank" rel="noopener noreferrer">Danilo Souza</a>.</p>
